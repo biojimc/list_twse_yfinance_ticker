@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/cpp:noble
 
-RUN apt-get update && apt-get install -y wget gnupg unzip curl
+RUN apt-get update && apt-get install -y wget gnupg unzip curl python3 python3-pip
 RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg > /dev/null
 RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null
 RUN apt-get update
