@@ -10,7 +10,8 @@ RUN apt-get install -y google-chrome-stable
 #RUN wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/138.0.7204.49/linux64/chromedriver-linux64.zip
 RUN unzip /tmp/chromedriver.zip -d /usr/local/bin/
-#RUN chmod +x /usr/local/bin/chromedriver
+RUN mv /usr/local/bin/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+RUN chmod +x /usr/local/bin/chromedriver
 #RUN pip install selenium pandas
 RUN pip3 install --break-system-packages selenium pandas lxml html5lib beautifulsoup4
 
