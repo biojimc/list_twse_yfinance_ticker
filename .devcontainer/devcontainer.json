@@ -1,0 +1,13 @@
+{
+  "name": "selenium + ChromeDriver",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {},
+  "extensions": [
+    "ms-vscode.cpptools"
+  ],
+  "forwardPorts": [],
+  "postCreateCommand": "echo 'selenium + ChromeDriver ready!'",
+  "remoteUser": "vscode"
+}
