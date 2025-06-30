@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from io import StringIO
 import time
+import re
 
 # 設定 headless Chrome
 options = Options()
@@ -24,8 +25,18 @@ driver.quit()
 
 # 解析 HTML，找有「有價證券代號」字樣的 table
 soup = BeautifulSoup(html, "html.parser")
+full_text = soup.get_text()
 tables = soup.find_all("table")
 print(f"共抓到 {len(tables)} 張 table")
+
+# 搜尋日期
+match = re.search(r"最近更新日期[:：]\s*(\d{4}/\d{2}/\d{2})", full_text)
+if match:
+    date_str = match.group(1)
+    print("✅ 找到最近更新日期：", date_str)
+else:
+    print("❌ 沒找到最近更新日期")
+
 
 target_table = None
 for t in tables:
@@ -64,3 +75,8 @@ df = df[["股票代號", "股票名稱", "ISIN", "產業別", "上市日", "市�
 df['ticker'] = df['股票代號'] + '.TW'
 
 print(df.head())
+
+# 全部列出
+print(f"\n共 {len(df.dropna(subset=['股票代號', '股票名稱', 'ticker']))} 檔上市股票\n")
+for index, row in df.dropna(subset=['股票代號', '股票名稱', 'ticker']).iterrows():
+    print(f"{row['股票代號']:>4}  {row['股票名稱']:<10}  {row['ticker']}")
