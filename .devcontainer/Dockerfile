@@ -11,5 +11,6 @@ RUN apt-get install -y google-chrome-stable
 RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/138.0.7204.49/linux64/chromedriver-linux64.zip
 RUN unzip /tmp/chromedriver.zip -d /usr/local/bin/
 RUN chmod +x /usr/local/bin/chromedriver
-RUN pip install selenium pandas
+#RUN pip install selenium pandas
+RUN pip3 install --break-system-packages selenium pandas
     
