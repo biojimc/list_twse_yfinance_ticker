@@ -12,5 +12,6 @@ RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrom
 RUN unzip /tmp/chromedriver.zip -d /usr/local/bin/
 RUN chmod +x /usr/local/bin/chromedriver
 #RUN pip install selenium pandas
-RUN pip3 install --break-system-packages selenium pandas
+RUN pip3 install --break-system-packages selenium pandas lxml html5lib beautifulsoup4
+
     
