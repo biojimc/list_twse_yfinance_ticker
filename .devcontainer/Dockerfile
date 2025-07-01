@@ -6,9 +6,8 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http:
 RUN apt-get update
 RUN apt-get install -y google-chrome-stable
 #RUN CHROME_VERSION=$(google-chrome --version | grep -oP "\d+\.\d+\.\d+\.\d+" | cut -d. -f1)
-#RUN CHROMEDRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-#RUN wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-RUN wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/138.0.7204.49/linux64/chromedriver-linux64.zip
+RUN CHROME_VERSION=$(google-chrome --version | grep -oP "\d+\.\d+\.\d+\.\d+")
+RUN wget -O /tmp/chromedriver.zip "https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROME_VERSION}/linux64/chromedriver-linux64.zip"
 RUN unzip /tmp/chromedriver.zip -d /usr/local/bin/
 RUN mv /usr/local/bin/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
 RUN chmod +x /usr/local/bin/chromedriver
